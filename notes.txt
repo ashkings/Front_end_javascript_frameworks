@@ -1,0 +1,114 @@
+Why React Js?
+------------
+
+Now, the main question arises in front of us is why one should use ReactJS. There are so many open-source platforms for making the front-end web application 
+development easier, like Angular. Let us take a quick look on the benefits of React over other competitive technologies or frameworks. With the front-end world 
+changing on a daily basis, it’s hard to devote time to learning a new framework – especially when that framework could ultimately become a dead end. So, if you're 
+looking for the next best thing but you're feeling a little bit lost in the framework jungle, I suggest checking out React.
+------------
+Simplicity||
+------------
+
+ReactJS is just simpler to grasp right away. The component-based approach, well-defined lifecycle, and use of just plain JavaScript make React very simple to learn, 
+build a professional web (and mobile applications), and support it. React uses a special syntax called JSX which allows you to mix HTML with JavaScript. This is not 
+a requirement; Developer can still write in plain JavaScript but JSX is much easier to use.
+---------------
+Easy to learn||
+---------------
+
+Anyone with a basic previous knowledge in programming can easily understand React while Angular and Ember are referred to as ‘Domain specific Language’, implying 
+that it is difficult to learn them. For react you just need basic knowledge of CSS and HTML.
+-----------------
+Native Approach||
+-----------------
+
+React can be used to create mobile applications (React Native). And React is a diehard fan of reusability, meaning extensive code reusability is supported. 
+So at the same time we can make IOS, Android and Web application.
+--------------
+Data Binding||
+--------------
+
+React uses one-way data binding and an application architecture called Flux controls the flow of data to components through one control point – the dispatcher. 
+It's easier to debug self-contained components of large ReactJS apps.
+-------------
+Performance||
+-------------
+
+React does not offer any concept of a built-in container for dependency. You can use Browserify, Require JS, EcmaScript 6 modules which we can use via Babel, 
+ReactJS-di to inject dependencies automatically.
+-------------
+Testability||
+-------------
+
+ReactJS applications are super easy to test. React views can be treated as functions of the state, so we can manipulate with state we pass to the ReactJS view 
+and take a look at the output and triggered actions, events, functions, etc.
+
+
+What is React JS?
+----------------- 
+ReactJS basically is an open-source JavaScript library which is used for building user interfaces specifically for single page applications. It’s used for handling 
+view layer for web and mobile apps. React also allows us to create reusable UI components. React was first created by Jordan Walke, a software engineer working for 
+Facebook. React first deployed on Facebook’s newsfeed in 2011 and on Instagram.com in 2012.
+ 
+React allows developers to create large web applications which can change data, without reloading the page. The main purpose of React is to be fast, scalable, and 
+simple. It works only on user interfaces in application. This corresponds to view in the MVC template. It can be used with a combination of other JavaScript 
+libraries or frameworks, such as Angular JS in MVC.
+
+Inside the coursera course
+##########################
+
+React Follows Declarative approach,component-based approach.
+
+Now what is declarative approach?
+--------------------------------
+
+The imperative approach, when you specify clearly step by step, how it needs to be accomplished, as opposed to the declarative approach where you specify what you 
+    -------------------                                                                                           ---------------------                           
+want to accomplish.
+
+Created first React app using create React-APP in command line
+
+-> So, to render the view to the DOM, as you noticed, we have used this particular statement which is in the index.js file that says
+
+--------------------------------------------------------------
+||ReactDOM.render.(<App/>, document.getElementByld('root'). ||
+--------------------------------------------------------------
+
+And so, that is how we render(copy) that into the index.html page.
+As we have seen, this is the div which is going to be used as the Root DOM node onto which that dom elements created by my app.js is rendered in my page.
+And so, that is how the view of your React application gets created.
+
+
+                                                                 JSX(JavaScript Extension)
+
+It is basically a html like code in our javascript like used in App.js file
+--------------------------------------------------------------
+|<div className="App">                                        |
+|     <header className="App-header">                         |
+|        <img src={logo} className="App-logo" alt="logo" />   |
+|        <p>                                                  |
+|          Edit <code>src/App.js</code> and save to reload.   |
+|        </p>                                                 |
+|        <a                                                   |
+|          className="App-link"                               |
+|          href="https://reactjs.org"                         |
+|          target="_blank"                                    |
+|          rel="noopener noreferrer"                          |
+|        >                                                    |
+|          Learn React                                        |
+|        </a>                                                 |
+|      </header>                                              |
+|    </div>                                                   |
+|--------------------------------------------------------------
+
+-> JSX is syntactic extensions to JavaScript which enables us to express react elements using it HTML like syntax.
+-> So, it is a shorthand notation from JavaScript functions that are called, which evaluate the JavaScript object.
+-> Avoids artificial separation of rendering logic from other UI logic.
+
+ 
+ # Using Bootsrtap in React:
+
+Now (Reactstrap and React-popper) together will enable us to make use of React components based re-implementation of the various Bootstrap Javascript components. 
+    ----------------------
+
+
