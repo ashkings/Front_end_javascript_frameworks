@@ -111,4 +111,32 @@ It is basically a html like code in our javascript like used in App.js file
 Now (Reactstrap and React-popper) together will enable us to make use of React components based re-implementation of the various Bootstrap Javascript components. 
     ----------------------
 
+Components:
+User defined components should always begin with capital letter.Any components in class i.e class component must have contrutor and render() which return the
+view of the component.Basic component structure:
+import React, { Component } from 'react';
+import { Media } from 'reactstrap';
 
+----------------------------------------
+| class Menu extends Component {       |
+|    constructor(props) {              |
+|        super(props);                 |
+|                                      |
+|    render() {                        |
+|        const menu                    |
+|                                      |
+|        return (                      |
+|          <div className="container"> |
+|            <div className="row">     |
+|              <Media list>            |
+|                  {menu}              |
+|              </Media>                |
+|            </div>                    |
+|          </div>                      |
+|        );                            |
+|    }                                 |
+|}                                     |
+| export default Menu;                 |                    |
+|---------------------------------------
+ 
+When creating list of items in react every item requires a key attribute.
