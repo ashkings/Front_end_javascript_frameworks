@@ -140,3 +140,8 @@ import { Media } from 'reactstrap';
 |---------------------------------------
  
 When creating list of items in react every item requires a key attribute.
+
+
+React Components:State And Props
+
+In react only class components can store states.State can only be modified by saying setstate it can be modified by just changing the property. 
