@@ -47,7 +47,7 @@ import { Link } from 'react-router-dom';
     const  DishDetail = (props) => {
         if (props.dish==null){
     		return(
-    			<div><h1>adsfdgf</h1></div>
+    			<div></div>
     		)
     	}
     	return (
