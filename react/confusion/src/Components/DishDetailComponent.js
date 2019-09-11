@@ -1,18 +1,18 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody,CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,
+    CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 	function RenderDish(dish) {
-		if (dish != null)
+		if (dish.dish != null)
             return(
-                 <div className='col-12 col-md-5 m-1'>
-                    <Card>
-                        <CardImg width="100%" src={dish.image} alt={dish.name} />
-                        <CardBody>
-                            <CardTitle>{dish.name}</CardTitle>
-                            <CardText>{dish.description}</CardText>
-                        </CardBody>
-                    </Card>
-                </div>
+                <Card>
+                    <CardImg width="100%" src={dish.dish.image} alt={dish.dish.name} />
+                    <CardBody>
+                        <CardTitle>{dish.dish.name}</CardTitle>
+                        <CardText>{dish.dish.description}</CardText>
+                    </CardBody>
+                </Card>
             );
         else
             return(
@@ -20,7 +20,7 @@ import { Card, CardImg, CardText, CardBody,CardTitle } from 'reactstrap';
         );
     }
     function RenderComments(comments) {
-    	const coments = comments.map((comment) => {
+    	const coments = comments.comments.map((comment) => {
             return (
                 <li key={comment.id}>
                     <p>{comment.comment}</p>
@@ -41,26 +41,35 @@ import { Card, CardImg, CardText, CardBody,CardTitle } from 'reactstrap';
                 <ul className='list-unstyled'>
                     {coments}
                 </ul>
-
             </div>
         )
     }
     const  DishDetail = (props) => {
-    	const dish = props.selectedDish
-    	if (dish==null){
+        if (props.dish==null){
     		return(
-    			<div></div>
+    			<div><h1>adsfdgf</h1></div>
     		)
     	}
-    	const dishDetail = RenderDish(dish)
-    	const dishComment = RenderComments(dish.comments)
-    	return(
-    		<div className="container">
-    			<div className="row">
-    				{dishDetail}
-    				{dishComment}
-    			</div>
-    		</div>
-    	)
+    	return (
+            <div className="container">
+            <div className="row">
+                <Breadcrumb>
+
+                    <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>{props.dish.name}</h3>
+                    <hr />
+                </div>                
+            </div>
+            <div className="row">
+                <div className="col-12 col-md-5 m-1">
+                    <RenderDish dish={props.dish} />
+                </div>
+                <RenderComments comments={props.comments} />
+            </div>
+            </div>
+        );
     }
 export default DishDetail;
