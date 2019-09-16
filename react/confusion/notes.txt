@@ -157,3 +157,35 @@ The React Router API is based on three components:
 
 <Link to={`/menu/${dish.id}`} >
 `` these quotes are used to make url as menu/:id
+
+FLUX ARCHITECHTURE
+
+Flux is an architecture that Facebook uses internally when working with React. It is not a framework
+or a library. It is simply a new kind of architecture that complements React and the concept of
+Unidirectional Data Flow.
+
+Flux is probably better explained by explaining its individual components:
+
+-> Actions - Helper methods that facilitate passing data to the Dispatcher
+-> Dispatcher - Receives actions and broadcasts payloads to registered callbacks
+-> Stores - Containers for application state & logic that have callbacks registered to the dispatcher
+-> Controller Views - React Components that grab the state from Stores and pass it down via props
+to child components.
+
+What is Redux?
+-> It is a predictable state container for JavaScript apps
+->Inspired by flux,elm and immutable js
+->Make state mutation possible
+->It also allows time-travel debbuging
+
+Main principles of Redux:
+
+->Single source of truth:
+    Single state object tree within a single store
+
+->State is read-only (only getters no setters):
+    Changes should only be done through actions
+
+->Changes are made with pure functions:
+    Take previous states and actions and return new state
+    No mutation of previous state
