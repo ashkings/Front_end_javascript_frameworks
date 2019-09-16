@@ -189,3 +189,11 @@ Main principles of Redux:
 ->Changes are made with pure functions:
     Take previous states and actions and return new state
     No mutation of previous state
+
+
+React-Redux-Forms
+
+-> A versatile,fast and intutive library for creating complex and Performant Forms in React and Redux
+-> Collection of reducer creators and action creators
+-> Form data stored in Redux store in a modules
+-> Validation support for forms
