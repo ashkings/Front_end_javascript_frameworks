@@ -9,51 +9,12 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-function RenderDish(dish) {
-    if (dish.dish != null)
-        return(
-            <Card>
-                <CardImg width="100%" src={dish.dish.image} alt={dish.dish.name} />
-                <CardBody>
-                    <CardTitle>{dish.dish.name}</CardTitle>
-                    <CardText>{dish.dish.description}</CardText>
-                </CardBody>
-            </Card>
-        );
-    else
-        return(
-            <div></div>
-    );
-}
-function RenderComments(comments) {
-    const coments = comments.comments.map((comment) => {
-        return (
-            <li key={comment.id}>
-                <p>{comment.comment}</p>
-                <p>-- {comment.author},
-                &nbsp;
-                {new Intl.DateTimeFormat('en-Us',{
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric'
-                }).format(new Date(comment.date))}
-                </p>
-            </li>
-        )
-    })
-    return (
-            <ul className='list-unstyled'>
-                {coments}
-            </ul>
-            
-    )
-}
-
 class CommentForm extends Component{
     constructor(props) {
         super(props);
     
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
           isModalOpen: false
         };
@@ -66,35 +27,13 @@ class CommentForm extends Component{
       }
 
       handleSubmit(values){
-        alert('Current State is: ' + JSON.stringify(values));
-      }
+        this.toggleModal();
+        this.props.addComment(this.props.dishId, values.rating, values.yourname, values.comment);
+    }
 
     render(){
-        if (this.props.dish==null){
-                return(
-                    <div></div>
-                )
-        }
             return (
                 <div className="container">
-                <div className="row">
-                    <Breadcrumb>
-    
-                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{this.props.dish.name}</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="col-12">
-                        <h3>{this.props.dish.name}</h3>
-                        <hr />
-                    </div>                
-                </div>
-                <div className="row">
-                    <div className="col-12 col-md-5 m-1">
-                        <RenderDish dish={this.props.dish} />
-                    </div>
-                    <div className='col-12 col-md-5 m-1'>
-                    <h4> Comments </h4>
-                    <RenderComments comments={this.props.comments} />
                     <Button onClick={this.toggleModal}>
                         <span className="fa fa-pencil fa-lg"></span> Submit Comment
                     </Button>
@@ -138,9 +77,9 @@ class CommentForm extends Component{
                                     </Col>
                                 </Row>
                                 <Row className="form-group">
-                                    <Label htmlFor="message" md={6}>Comment</Label>
+                                    <Label htmlFor="comment" md={6}>Comment</Label>
                                     <Col md={12}>
-                                        <Control.textarea model=".message" id="message" name="message"
+                                        <Control.textarea model=".comment" id="comment" name="comment"
                                             rows="12"
                                             className="form-control" />
                                     </Col>
@@ -155,10 +94,86 @@ class CommentForm extends Component{
                             </LocalForm>
                         </ModalBody>
                     </Modal>
-                    </div>
-                </div>
                 </div>
             );
         }
     }
-export default CommentForm;
+
+function RenderDish(dish) {
+    if (dish.dish != null)
+        return(
+            <Card>
+                <CardImg width="100%" src={dish.dish.image} alt={dish.dish.name} />
+                <CardBody>
+                    <CardTitle>{dish.dish.name}</CardTitle>
+                    <CardText>{dish.dish.description}</CardText>
+                </CardBody>
+            </Card>
+        );
+    else
+        return(
+            <div></div>
+    );
+}
+function RenderComments(props) {
+    
+    const {comments, addComment, dishId} = props
+    const coments = comments.map((comment) => {
+        return (
+            <li key={comment.id}>
+                <p>{comment.comment}</p>
+                <p>-- {comment.author},
+                &nbsp;
+                {new Intl.DateTimeFormat('en-Us',{
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                }).format(new Date(comment.date))}
+                </p>
+            </li>
+        )
+    })
+    return (
+        <div className='col-12 col-md-5 m-1'>
+            <h4> Comments </h4>
+            <ul className='list-unstyled'>
+                {coments}
+            </ul>
+            <CommentForm dishId={dishId} addComment={addComment} />
+        </div>    
+    )
+}
+
+const DishDetail = (props) =>{
+    if (props.dish==null){
+        return(
+            <div></div>
+        )
+}
+    return (
+        <div className="container">
+            <div className="row">
+                <Breadcrumb>
+
+                    <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>{props.dish.name}</h3>
+                    <hr />
+                </div>                
+            </div>
+            <div className="row">
+                <div className="col-12 col-md-5 m-1">
+                    <RenderDish dish={props.dish} />
+                </div>
+                <RenderComments comments={props.comments}
+                addComment={props.addComment}
+                dishId={props.dish.id} />
+            </div>
+        </div>
+    )
+
+}
+
+export default DishDetail;
