@@ -197,3 +197,19 @@ React-Redux-Forms
 -> Collection of reducer creators and action creators
 -> Form data stored in Redux store in a modules
 -> Validation support for forms
+
+Redux Middleware
+Provides the capability to run code after an action is dispatched, but before it reaches the reducer.
+    -Third party extension point
+    -Eg.Logging,async API calls
+
+Middleware is used typically for:
+-> Inspectingthe actions and state,
+-> Modify actions,
+-> Dispatch other actions,
+-> Stop actions from reaching the reducer, etc.
+
+Redux Thunk:
+In programming, thunk is subroutine used to inject an   additional calculation in another subroutine.
+    -Delays a calculation until its result is needed.
+    -Inserts operations at beggining and end of the subroutine.
