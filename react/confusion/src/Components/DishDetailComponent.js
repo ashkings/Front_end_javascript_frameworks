@@ -161,4 +161,4 @@ class CommentForm extends Component{
             );
         }
     }
-    export default CommentForm;
+export default CommentForm;
