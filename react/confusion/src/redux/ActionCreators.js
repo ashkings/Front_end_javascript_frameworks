@@ -11,6 +11,7 @@ export const addComment = (dishId, rating, author, comment) => ({
     }
 });
 
+//Implementation of Thunk
 export const fetchDishes = () => (dispatch) => {
 
     dispatch(dishesLoading(true));
